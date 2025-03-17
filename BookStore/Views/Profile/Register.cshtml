@@ -1,0 +1,69 @@
+<style>
+.form-container {
+    background: white;
+    margin-left: 30%;
+    margin-top: 5%;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+</style>
+
+<div class="form-container">
+        <h2>Регістрація</h2>
+        <form asp-action="Register" method="post">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <span class="error">@Html.ValidationMessage("ValidationException")</span>
+                <span class="error">@Html.ValidationMessage("LoginException")</span>
+            }
+            <div class="input-group">
+                <label for="login">Логин</label>
+                <input type="text" id="registerUsername" name="Login" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="registerEmail" name="Email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="registerPassword" name="Password" required>
+            </div>
+            <button type="submit" class="btn">Зареєструватися</button>
+        </form>
+    </div>

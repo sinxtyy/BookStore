@@ -1,0 +1,68 @@
+﻿@using BookStore.Core.Models
+
+@model List<Transaction>?
+
+<title>Історія замовлень</title>
+<style>
+	.container {
+		width: 80%;
+		margin: 20px auto;
+		background: white;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+	.section {
+		margin-top: 20px;
+		padding: 15px;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		background: #fff;
+	}
+
+	.order-item {
+		padding: 10px;
+		border-bottom: 1px solid #eee;
+	}
+
+		.order-item:last-child {
+			border-bottom: none;
+		}
+
+	.orders-to-page {
+		background: #007bff;
+		color: white;
+		border: none;
+		padding: 10px 15px;
+		cursor: pointer;
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+
+		.orders-to-page:hover {
+			background: #0056b3;
+		}
+</style>
+
+<div class="container">
+	<div class="section">
+		<a asp-controller="Profile" asp-action="Home">Назад</a>
+	</div>
+
+	<div class="section">
+		<h3>Історія замовлень</h3>
+		@{
+			foreach (var i in Model)
+			{
+				<div class="order-item">
+					<p>Замовлення @i.Id</p>
+					<small>Дата: @i.Date.Day @i.Date.Month @i.Date.Year </small>
+					<small>Замовник: @i.Addresser</small>
+					<small>Сума: @i.Amount</small>
+				</div>
+			}
+		}
+
+		<button class="orders-to-page" asp-controller="Profile" asp-action="Home">Профіль</button>
+	</div>
+</div>
